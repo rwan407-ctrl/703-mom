@@ -8,25 +8,19 @@
   :root{
     --ink:#1a1d29;--muted:#5b6270;--line:#e1e4ea;--bg:#fbfbfd;--card:#ffffff;
     --accent:#0b5cab;--accent-soft:#e8f1fb;--warn:#b4451f;--warn-soft:#fcefe9;
-    --good:#0a7d52;--good-soft:#e7f5ee;
+    --good:#0a7d52;--good-soft:#e7f5ee;--med:#0a6e75;--med-soft:#e3f3f4;
     --fs:20px;
   }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
-  body{
-    background:var(--bg);color:var(--ink);
+  body{background:var(--bg);color:var(--ink);
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
-    line-height:1.85;padding:14px 16px 80px;-webkit-font-smoothing:antialiased;font-size:var(--fs);
-  }
+    line-height:1.85;padding:14px 16px 80px;-webkit-font-smoothing:antialiased;font-size:var(--fs);}
   h1{font-size:calc(var(--fs) * 1.05);margin:2px 0 2px;}
   .subtitle{font-size:calc(var(--fs) * .72);color:var(--muted);margin-bottom:10px;}
 
-  .bar{
-    position:sticky;top:0;z-index:20;background:rgba(251,251,253,.96);
-    backdrop-filter:saturate(1.4) blur(6px);
-    display:flex;align-items:center;gap:8px;flex-wrap:wrap;
-    padding:10px 2px;margin:0 -2px 6px;border-bottom:1px solid var(--line);
-  }
+  .bar{position:sticky;top:0;z-index:20;background:rgba(251,251,253,.96);backdrop-filter:saturate(1.4) blur(6px);
+    display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:10px 2px;margin:0 -2px 6px;border-bottom:1px solid var(--line);}
   .play{font-family:inherit;font-weight:800;border:none;cursor:pointer;background:var(--accent);color:#fff;
     border-radius:30px;font-size:calc(var(--fs) * .92);padding:12px 22px;box-shadow:0 2px 8px rgba(11,92,171,.28);}
   .play:active{transform:translateY(1px);}
@@ -34,6 +28,9 @@
   .mini{font-family:inherit;cursor:pointer;border:1px solid var(--line);background:var(--card);color:var(--ink);
     border-radius:22px;font-size:calc(var(--fs) * .66);padding:8px 12px;}
   .mini:active{transform:translateY(1px);}
+  .casebtn{font-weight:800;}
+  body.case-bank .casebtn{border-color:var(--accent);color:var(--accent);background:var(--accent-soft);}
+  body.case-med .casebtn{border-color:var(--med);color:var(--med);background:var(--med-soft);}
   .fsgrp{display:flex;align-items:center;gap:0;margin-left:auto;}
   .fsgrp .mini{border-radius:0;}
   .fsgrp .mini:first-child{border-radius:22px 0 0 22px;}
@@ -43,28 +40,39 @@
   .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 18px 18px;
     margin-bottom:14px;box-shadow:0 1px 3px rgba(20,25,45,.04);transition:box-shadow .18s,border-color .18s,background .18s;}
   .card.reading{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft);background:#fcfdff;}
+  body.case-med .card.reading{border-color:var(--med);box-shadow:0 0 0 3px var(--med-soft);}
 
   .intro{background:var(--good-soft);border-color:#cfe9dd;color:#1d4d3a;font-size:calc(var(--fs) * .86);}
 
-  .casecard{background:var(--accent-soft);border-color:#cfe0f3;}
-  .casecard .title{font-weight:800;color:var(--accent);margin-bottom:6px;font-size:calc(var(--fs) * 1.0);}
-  .casecard .tag{display:inline-block;font-size:calc(var(--fs)*.6);color:#fff;background:var(--warn);
+  .casecard.bank{background:var(--accent-soft);border-color:#cfe0f3;}
+  .casecard.med{background:var(--med-soft);border-color:#bfe2e4;}
+  .casecard .title{font-weight:800;margin-bottom:6px;font-size:calc(var(--fs) * 1.0);}
+  .casecard.bank .title{color:var(--accent);}
+  .casecard.med .title{color:var(--med);}
+  .casecard .tag{display:inline-block;font-size:calc(var(--fs)*.55);color:#fff;background:var(--warn);
     border-radius:20px;padding:2px 10px;margin-left:8px;vertical-align:middle;font-weight:700;}
 
   .qhead{display:flex;align-items:center;gap:10px;margin-bottom:8px;flex-wrap:wrap;}
   .num{font-weight:800;color:var(--accent);font-size:calc(var(--fs) * .92);}
+  body.case-med .num{color:var(--med);}
   .mk{font-size:calc(var(--fs)*.6);font-weight:700;color:var(--accent);background:var(--accent-soft);border-radius:20px;padding:2px 10px;}
+  body.case-med .mk{color:var(--med);background:var(--med-soft);}
   .tag{font-size:calc(var(--fs)*.6);color:var(--muted);}
   .say{margin-left:auto;font-family:inherit;cursor:pointer;border:1px solid var(--line);background:var(--card);
     color:var(--accent);border-radius:20px;font-size:calc(var(--fs)*.62);padding:6px 12px;}
+  body.case-med .say{color:var(--med);}
   .say:active{transform:translateY(1px);}
 
   .qq{font-weight:700;margin-bottom:10px;}
-  .alabel{display:block;font-size:calc(var(--fs)*.62);font-weight:800;color:var(--good);
-    letter-spacing:.5px;margin-bottom:4px;}
-  .qa{color:#23303f;background:#fbfdfc;border-left:3px solid var(--good);border-radius:0 10px 10px 0;
-    padding:11px 14px;}
+  .alabel{display:block;font-size:calc(var(--fs)*.62);font-weight:800;color:var(--good);letter-spacing:.5px;margin-bottom:4px;}
+  .qa{color:#23303f;background:#fbfdfc;border-left:3px solid var(--good);border-radius:0 10px 10px 0;padding:11px 14px;}
   .qa b{color:var(--accent);}
+  body.case-med .qa b{color:var(--med);}
+  .casebody{color:var(--ink);}
+
+  /* 案例切换：隐藏非当前案例的一切 */
+  body.case-bank .med{display:none !important;}
+  body.case-med  .bank{display:none !important;}
 
   details.en-tpl{margin-top:11px;display:none;}
   body.show-en details.en-tpl{display:block;}
@@ -73,20 +81,20 @@
   details.en-tpl summary::-webkit-details-marker{display:none;}
   details.en-tpl .body{border-left:3px solid var(--line);background:#fafafb;border-radius:0 8px 8px 0;
     padding:10px 12px;margin-top:8px;font-size:calc(var(--fs)*.7);line-height:1.7;color:#3a4250;}
-  details.en-tpl .body b{color:var(--ink);}
 
   .foot{margin-top:20px;font-size:calc(var(--fs)*.62);color:var(--muted);text-align:center;line-height:1.7;}
   audio{display:none;}
 </style>
 </head>
-<body>
+<body class="case-bank">
   <h1>INFOSYS 703 — 中文讲解</h1>
-  <div class="subtitle">虚构案例「银蕨银行」贯穿全卷 · 九题 + 事件分析 · 每题含中文范例答案 · 妈妈版</div>
+  <div class="subtitle">两个虚构案例可切换：🏦 银蕨银行（贷款风控） / 🏥 北岛医院（放射科 AI 诊断） · 每题含中文范例答案 · 妈妈版</div>
 
   <div class="bar">
+    <button class="mini casebtn" id="caseBtn">🏦 银行版　点这切🏥医院</button>
     <button class="play" id="playAll">▶ 一键朗读（中文）</button>
     <button class="mini" id="stopAll">■ 停止</button>
-    <button class="mini" id="enToggle">显示英文模板</button>
+    <button class="mini" id="enToggle">英文模板</button>
     <div class="fsgrp">
       <button class="mini" id="fsDown" title="字小一点">A−</button>
       <button class="mini" id="fsUp" title="字大一点">A＋</button>
@@ -95,101 +103,132 @@
   </div>
 
   <div class="card intro" data-audio="00_intro">
-    👵 点上面蓝色的「▶ 一键朗读」，它就会用中文从头读到尾：每道题先念题目，再念完整的<b>中文范例答案</b>。每段右边的「🔊 读这段」可以只听那一段；字小就点 A＋。
+    👵 上面可以切「🏦 银行 / 🏥 医院」两个案例。点蓝色「▶ 一键朗读」，它就用中文从头读到尾：每题先念题目，再念完整的<b>中文范例答案</b>。每段右边「🔊 读这段」可只听一段；字小点 A＋。
   </div>
 
-  <div class="card casecard" data-audio="01_case">
-    <div class="title">案例：银蕨银行<span class="tag">虚构</span><button class="say">🔊 读这段</button></div>
-    <div class="qa" style="border:none;background:transparent;padding:0;color:var(--ink);">
+  <!-- 案例（银行） -->
+  <div class="card casecard bank">
+    <div class="title">案例：银蕨银行<span class="tag">虚构 · 银行</span><button class="say">🔊 读这段</button></div>
+    <div class="casebody" data-audio="01_case">
       这是一家虚构的新西兰中型银行，每年要处理上万笔个人贷款申请。过去全靠信贷员人工审核：翻看申请人的收入、负债和还款记录，凭经验判断他会不会还不上钱。问题是，每个信贷员的标准都不一样，旺季积压严重，有的客户等了两个星期还没有结果，而且坏账一直降不下来。<br><br>
-      于是银行想引入一套人工智能系统：让它学习过去十年里「哪些人最后真的违约了」的历史记录，再给每一笔新申请打一个<b>违约风险分</b>。但银行高层很谨慎：一笔贷款被拒，可能就影响一个家庭买房；万一这套系统带着偏见，专挑某些族裔或低收入的人打高分怎么办？万一申请人问「我为什么被拒」却没人答得上来怎么办？<br><br>
-      所以银行请你这位 <b>AI 顾问</b>来设计：用哪一种人工智能、需要哪些数据、怎么和信贷员配合、怎么守住伦理和问责。记住——这套系统不是要取代信贷员，而是要又快又稳，还要经得起监管和投诉的追问。
+      于是银行想引入一套人工智能系统：让它学习过去十年里「哪些人最后真的违约了」的历史记录，再给每一笔新申请打一个<b>违约风险分</b>。但银行高层很谨慎：一笔贷款被拒，可能就影响一个家庭买房；万一系统带着偏见，专挑某些族裔或低收入的人打高分怎么办？万一申请人问「我为什么被拒」却没人答得上来怎么办？<br><br>
+      所以银行请你这位 <b>AI 顾问</b>来设计：用哪种 AI、要哪些数据、怎么和信贷员配合、怎么守住伦理和问责。这套系统不是要取代信贷员，而是要又快又稳，还要经得起监管和投诉的追问。
+    </div>
+  </div>
+
+  <!-- 案例（医院） -->
+  <div class="card casecard med">
+    <div class="title">案例：北岛综合医院<span class="tag">虚构 · 医院</span><button class="say">🔊 读这段</button></div>
+    <div class="casebody" data-audio="01_case_med">
+      这是一家虚构的新西兰公立医院，放射科每天要看大量影像（胸部 X 光、乳腺/肺部 CT 等）。问题是：经验丰富的放射科医生不够用，排队等报告的病人越来越多；看片子又很费眼力，疲劳时容易把早期、不明显的病灶看漏。<b>最怕的就是漏诊</b>——一个早期癌症若被当成正常放过去，可能耽误最佳治疗时机，甚至危及生命。<br><br>
+      于是医院想引入一套人工智能系统：让它学习过去大量「已由医生确诊为良性/恶性」的影像，再给每张新片子一个<b>可疑程度评分</b>，帮医生别把可疑的漏掉。但医院很谨慎：诊断<b>人命关天</b>、医生还有法律上的<b>注意义务（duty of care）</b>；万一 AI 在某些人群上不准、或医生过度依赖反而丢了判断力怎么办？<br><br>
+      所以医院请你这位 <b>AI 顾问</b>来设计：用哪种 AI、要哪些数据、怎么和放射科医生配合、怎么守住伦理和问责。这套系统不是要取代医生，而是当医生的<b>第二双眼睛</b>，尤其要降低漏诊。
     </div>
   </div>
 
   <!-- Q1 -->
-  <div class="card q" data-audio="02_q1">
+  <div class="card q">
     <div class="qhead"><span class="num">第 1 题</span><span class="mk">9%</span><span class="tag">该用哪种 AI</span><button class="say">🔊 读这段</button></div>
     <div class="qq">题目：识别并解释最适合哪一类 AI 系统，并说明依据。</div>
-    <div class="qa"><span class="alabel">范例答案（中文）</span>最适合的是<b>决策支持型 AI</b>（优化类）。它的核心任务是预测违约风险、对申请人进行分类，需要在大量历史数据里识别规律。这正好符合决策支持型 AI——用<b>有标签的数据</b>训练，再对新个案进行分类。它<b>不是</b>自动化 AI（不是简单按固定规则处理），<b>也不是</b>交互型 AI（没有对话成分）。</div>
-    <details class="en-tpl"><summary>英文作答模板（考试默写用）</summary><div class="body">The most suitable type is <b>Decision support AI ('optimisation')</b>. The core task is to predict default risk / classify applicants, requiring pattern detection in large historical data. This matches Decision support AI, trained on labelled data to classify new cases. It is <b>not</b> Automation AI (not simple rule-based processing) and <b>not</b> Engagement AI (no conversational element).</div></details>
+    <div class="qa bank" data-audio="02_q1"><span class="alabel">范例答案（中文）</span>最适合的是<b>决策支持型 AI</b>（优化类）。它的核心任务是预测违约风险、对申请人进行分类，需要在大量历史数据里识别规律。这正好符合决策支持型 AI——用<b>有标签的数据</b>训练，再对新个案分类。它<b>不是</b>自动化 AI（不是按固定规则处理），<b>也不是</b>交互型 AI（没有对话）。</div>
+    <div class="qa med" data-audio="02_q1_med"><span class="alabel">范例答案（中文 · 医院）</span>最适合的是<b>决策支持型 AI</b>（优化类）。它的核心任务是在影像里检测疾病、把片子分类为良性或恶性，需要在大量有标签的影像数据里识别规律。这正好符合决策支持型 AI——用医生<b>确诊过的有标签数据</b>训练，再对新片子分类。它<b>不是</b>自动化 AI，<b>也不是</b>交互型 AI。</div>
+    <details class="en-tpl bank"><summary>英文模板（考试默写用）</summary><div class="body">The most suitable type is <b>Decision support AI ('optimisation')</b>. The core task is to predict default risk / classify applicants... not Automation AI and not Engagement AI.</div></details>
+    <details class="en-tpl med"><summary>英文模板（考试默写用）</summary><div class="body">The most suitable type is <b>Decision support AI ('optimisation')</b>. The core task is to detect disease in scans / classify images as benign or malignant... not Automation AI and not Engagement AI.</div></details>
   </div>
 
   <!-- Q2 -->
-  <div class="card q" data-audio="03_q2">
+  <div class="card q">
     <div class="qhead"><span class="num">第 2 题</span><span class="mk">9%</span><span class="tag">需要哪些数据</span><button class="say">🔊 读这段</button></div>
     <div class="qq">题目：识别系统需要的关键数据，并解释为什么必要（要具体）。</div>
-    <div class="qa"><span class="alabel">范例答案（中文）</span>最关键的数据是<b>历史违约记录</b>——也就是模型训练所依据的「<b>有标签的结果</b>」。算法通过从这些标签里提取规律，来对新申请人进行分类；如果没有这些记录，模型就<b>没有任何依据</b>去学习哪些申请人可能违约，等于盲猜。</div>
-    <details class="en-tpl"><summary>英文作答模板（考试默写用）</summary><div class="body">The most critical data is the <b>historical default records</b> — the <b>labelled outcome</b> the model is trained on. The algorithm learns to <b>classify new applicants by extracting patterns from these labels</b>; without them, the model has no basis to learn which applicants are likely to default.</div></details>
+    <div class="qa bank" data-audio="03_q2"><span class="alabel">范例答案（中文）</span>最关键的是<b>历史违约记录</b>——模型训练所依据的「<b>有标签的结果</b>」。算法从这些标签里提取规律来对新申请人分类；没有它们，模型就<b>没有依据</b>去学习谁可能违约，等于盲猜。</div>
+    <div class="qa med" data-audio="03_q2_med"><span class="alabel">范例答案（中文 · 医院）</span>最关键的是<b>有标签的诊断影像</b>——过去由医生确诊为良性/恶性的片子，即「<b>有标签的结果</b>」。算法从这些标签里提取规律来对新片子分类；没有它们，模型就没有依据去学习哪些片子可能恶性，等于盲猜。</div>
+    <details class="en-tpl bank"><summary>英文模板（考试默写用）</summary><div class="body">The most critical data is the <b>historical default records</b> — the <b>labelled outcome</b>. Without them, the model has no basis to learn which applicants are likely to default.</div></details>
+    <details class="en-tpl med"><summary>英文模板（考试默写用）</summary><div class="body">The most critical data is the <b>labelled diagnostic images</b> — past scans confirmed benign/malignant by clinicians (the <b>labelled outcome</b>). Without them, no basis to learn which cases are likely malignant.</div></details>
   </div>
 
   <!-- Q3 -->
-  <div class="card q" data-audio="04_q3">
+  <div class="card q">
     <div class="qhead"><span class="num">第 3 题</span><span class="mk">12%</span><span class="tag">契合战略 + 独特优势</span><button class="say">🔊 读这段</button></div>
     <div class="qq">题目：a) AI 如何契合商业战略；b) 相比传统规则工具的独特优势？</div>
-    <div class="qa"><span class="alabel">范例答案（中文）</span><b>a)</b> AI 契合战略，是因为银行的目标是在高效处理贷款的同时管理好信用风险；决策支持型 AI 能更准确地预测违约风险、减少坏账，正好支持这个目标。<br><br><b>b)</b> 和人工审核或固定规则不同，决策支持型 AI 能<b>从数据里学习、发现人难以察觉的复杂规律，并随新数据不断更新</b>；人工审核更慢、且不同员工标准不一，而 AI 对每个人都用同一套标准。</div>
-    <details class="en-tpl"><summary>英文作答模板（考试默写用）</summary><div class="body"><b>a)</b> AI fits the strategy because the bank's goal is to manage credit risk while processing loans efficiently; Decision support AI supports this by predicting default risk more accurately, reducing bad debt.<br><br><b>b)</b> Unlike manual review or fixed rules, Decision support AI <b>learns from data and detects complex patterns humans cannot easily see, and updates as new data comes in</b>. Manual review is slower and inconsistent between staff; AI applies the same criteria to everyone.</div></details>
+    <div class="qa bank" data-audio="04_q3"><span class="alabel">范例答案（中文）</span><b>a)</b> 银行要在高效放贷的同时管理信用风险；决策支持 AI 能更准预测违约、减少坏账，正契合。<br><br><b>b)</b> 与人工/固定规则不同，它能<b>从数据学习、看穿人难察觉的规律、随新数据更新</b>；人工更慢且标准不一，AI 对每人同一标准。</div>
+    <div class="qa med" data-audio="04_q3_med"><span class="alabel">范例答案（中文 · 医院）</span><b>a)</b> 医院要提高诊断准确率、更早发现疾病；决策支持 AI 能更可靠标记可疑病例、抓住可能漏掉的病变，正契合。<br><br><b>b)</b> 与人工读片/固定规则不同，它能<b>从数据学习、发现医生可能忽略的细微规律、随新数据更新</b>；人工读片更慢、医生之间有差异，AI 对每张片子同一标准。</div>
+    <details class="en-tpl bank"><summary>英文模板（考试默写用）</summary><div class="body"><b>a)</b> Fits the bank's goal of managing credit risk while processing loans efficiently. <b>b)</b> Learns from data, detects patterns humans can't easily see, and updates — unlike slower, inconsistent manual review.</div></details>
+    <details class="en-tpl med"><summary>英文模板（考试默写用）</summary><div class="body"><b>a)</b> Fits the hospital's goal of improving diagnostic accuracy and detecting disease earlier. <b>b)</b> Detects subtle patterns clinicians may miss, applies consistent criteria to every scan, and updates over time.</div></details>
   </div>
 
   <!-- Q4 -->
-  <div class="card q" data-audio="05_q4">
+  <div class="card q">
     <div class="qhead"><span class="num">第 4 题</span><span class="mk">9%</span><span class="tag">数据基础 + 运作</span><button class="say">🔊 读这段</button></div>
     <div class="qq">题目：详细解释目标（to-be）流程中的数据基础与运作方式。</div>
-    <div class="qa"><span class="alabel">范例答案（中文）</span>它建立在<b>有标签的历史数据</b>之上（过去的申请 + 已知还款结果），训练它学会区分可靠借款人和高风险借款人的规律。流程五步：① 从银行系统<b>收集</b>数据；② <b>清洗准备</b>，按法规排除敏感属性；③ 模型给出一个<b>风险分</b>；④ 分数与员工判断<b>并排呈现</b>；⑤ 实际结果<b>回流更新</b>模型。AI 在③④作为辅助层——只打分、给提示，<b>不做决定</b>。</div>
-    <details class="en-tpl"><summary>英文作答模板（考试默写用）</summary><div class="body">Built on <b>labelled historical data</b> (past applications + known repayment outcomes). Process: ① data <b>collected</b> from bank systems; ② <b>cleaned/prepared</b>, sensitive attributes excluded per regulation; ③ model produces a <b>risk score</b>; ④ score shown to the employee <b>in parallel with</b> their assessment; ⑤ outcomes <b>feed back</b> so the model updates. AI operates at ③–④ as a support layer — scores and flags, does not decide.</div></details>
+    <div class="qa bank" data-audio="05_q4"><span class="alabel">范例答案（中文）</span>建在<b>有标签历史数据</b>上（过去申请 + 还款结果）。五步：① 从银行系统<b>收集</b>；② <b>清洗准备</b>、按法规排除敏感属性；③ 模型给<b>风险分</b>；④ 分数与员工判断<b>并排呈现</b>；⑤ 结果<b>回流更新</b>。AI 在③④只打分给提示、<b>不做决定</b>。</div>
+    <div class="qa med" data-audio="05_q4_med"><span class="alabel">范例答案（中文 · 医院）</span>建在<b>有标签影像数据</b>上（过去片子 + 确诊结果）。五步：① 从医院影像系统<b>收集</b>；② <b>清洗准备</b>、按健康隐私规定处理；③ 模型给每张片子<b>可疑评分</b>；④ 分数与医生判读<b>并排呈现</b>；⑤ 确诊结果<b>回流更新</b>。AI 在③④只<b>标记可疑、不下诊断</b>。</div>
+    <details class="en-tpl bank"><summary>英文模板（考试默写用）</summary><div class="body">Built on labelled historical data. ① collect → ② clean (exclude sensitive attributes) → ③ risk score → ④ shown in parallel with the employee → ⑤ outcomes feed back. AI supports at ③–④, does not decide.</div></details>
+    <details class="en-tpl med"><summary>英文模板（考试默写用）</summary><div class="body">Built on labelled imaging data. ① collect scans → ② clean (health-privacy rules) → ③ likelihood score → ④ shown in parallel with the radiologist → ⑤ confirmed diagnoses feed back. AI flags, does not diagnose.</div></details>
   </div>
 
   <!-- Q5 -->
-  <div class="card q" data-audio="06_q5">
+  <div class="card q">
     <div class="qhead"><span class="num">第 5 题</span><span class="mk">9%</span><span class="tag">人机协作 + 监督</span><button class="say">🔊 读这段</button></div>
     <div class="qq">题目：就人机协作与人类监督给出建议并说明理由。</div>
-    <div class="qa"><span class="alabel">范例答案（中文）</span>我建议让 AI 和员工<b>平行运行</b>，而不是抢在前面：员工独立做出判断，AI 同时给出自己的风险评估。当两者<b>在任一方向不一致</b>时，触发一个额外的<b>复审步骤</b>，员工必须重新考虑、并在定案前<b>记录理由</b>，最终决定权始终在员工手里。<br><br>理由：放贷是<b>高风险、受监管</b>的决定，所以<b>问责必须落在人身上</b>；平行运行能保留专业判断、<b>避免自动化偏见</b>；AI 充当独立的<b>交叉校验</b>，标记不一致——提升的是一致性和可辩护性，而不是把放贷标准放松。</div>
-    <details class="en-tpl"><summary>英文作答模板（考试默写用）</summary><div class="body">I recommend the AI runs <b>in parallel with</b> the employee rather than ahead. When they <b>disagree in either direction</b>, an <b>additional review</b> is triggered and the employee must reconsider and <b>record a reason</b> before finalizing. The employee always holds the final decision.<br><br>Justified because loan approval is a <b>high-stakes, regulated decision</b>, so <b>accountability must rest with a human</b>. Running AI in parallel preserves <b>judgement and avoids automation bias</b>, with the AI as an <b>independent cross-check</b> — improving consistency, not making lending looser.</div></details>
+    <div class="qa bank" data-audio="06_q5"><span class="alabel">范例答案（中文）</span>让 AI 与员工<b>平行</b>：各自独立判断，<b>不一致就强制复审</b>，员工重新考虑、<b>写下理由</b>再定案，决定权永远在人。理由：放贷是<b>高风险、受监管</b>决定，<b>问责必须在人</b>；平行<b>防自动化偏见</b>；AI 当独立<b>交叉校验</b>，提升一致性而非放松标准。</div>
+    <div class="qa med" data-audio="06_q5_med"><span class="alabel">范例答案（中文 · 医院）</span>让 AI 与放射科医生<b>平行</b>：医生独立判读，AI 同时评估；<b>不一致（尤其 AI 标了医生放过的）就强制二次复核</b>，医生重新考虑、<b>记录理由</b>再定案，最终诊断由医生做。理由：诊断<b>人命关天</b>、医生有<b>注意义务</b>，问责必须在人。<b>关键：误诊代价不对称——漏诊（假阴性）远比虚惊严重，监督要偏向「宁可多复查」</b>。平行防自动化偏见，AI 当独立校验抓住可能漏看的病例。</div>
+    <details class="en-tpl bank"><summary>英文模板（考试默写用）</summary><div class="body">AI runs <b>in parallel</b> with the employee; on disagreement a review is triggered and the employee records a reason before finalizing. High-stakes, regulated → accountability rests with a human; avoids automation bias; AI is an independent cross-check.</div></details>
+    <details class="en-tpl med"><summary>英文模板（考试默写用）</summary><div class="body">AI runs <b>in parallel</b> with the radiologist; on disagreement (esp. AI flags what the clinician cleared) a <b>mandatory second review</b> is triggered. Life-critical + <b>duty of care</b> → human accountable. Costs are <b>asymmetric</b>: a missed cancer (false negative) is far worse → bias oversight toward recall.</div></details>
   </div>
 
   <!-- Q6 -->
-  <div class="card q" data-audio="07_q6">
+  <div class="card q">
     <div class="qhead"><span class="num">第 6 题</span><span class="mk">9%</span><span class="tag">改变运用知识的方式</span><button class="say">🔊 读这段</button></div>
-    <div class="qq">题目：解释 AI 如何改变信贷员运用专业知识完成任务的方式。</div>
-    <div class="qa"><span class="alabel">范例答案（中文）</span>以前信贷员主要靠<b>个人经验和判断</b>，直接评估每位申请人、基本自己拍板。有了 AI，他的专业<b>不是消失，而是转移</b>。AI 接手了标准化、数据驱动的那部分，于是信贷员的知识被导向模型抓不到的地方：<b>解读风险分、判断何时该信它、处理临界个案、理解数字背后的情境</b>。他的专业从例行打分，转向<b>情境/人际判断 + 对 AI 输出的批判性校验</b>。这带来<b>去技能化风险</b>——所以「先独立判断、再看 AI」的平行设计，正是为了保护他的专业，把角色重新定位为校验和处理例外，而不是被取代。</div>
-    <details class="en-tpl"><summary>英文作答模板（考试默写用）</summary><div class="body">Previously the loan officer relied on their <b>personal experience and judgement</b> to assess each applicant directly. With AI, their expertise <b>shifts rather than disappears</b> — redirected toward <b>interpreting the AI's score and knowing when to trust it, handling borderline cases, and understanding the client's context</b>. This raises a <b>de-skilling risk</b>; the <b>parallel design</b> (judging independently before seeing the AI) <b>preserves their expertise</b>, repositioning the role toward validation and exception-handling.</div></details>
+    <div class="qq">题目：解释 AI 如何改变[岗位]运用专业知识完成任务的方式。</div>
+    <div class="qa bank" data-audio="07_q6"><span class="alabel">范例答案（中文）</span>以前信贷员靠<b>经验亲自判断</b>。有 AI 后专业<b>不消失而转移</b>：转向<b>解读风险分、判断何时该信、处理临界个案、理解情境</b>。带来<b>去技能化风险</b>——「先独立判断再看 AI」的平行设计正是为保护专业、重定位为校验与处理例外。</div>
+    <div class="qa med" data-audio="07_q6_med"><span class="alabel">范例答案（中文 · 医院）</span>以前放射科医生靠<b>临床判断亲自读片</b>。有 AI 后专业<b>转移</b>：转向<b>解读 AI 标记、判断何时该信、处理模糊/罕见病例、结合病史症状等影像外信息</b>。<b>去技能化风险在医学上尤其严重</b>（诊断力会退化）——平行设计（先独立读片再看 AI）保护临床专业、重定位为校验与处理复杂病例。</div>
+    <details class="en-tpl bank"><summary>英文模板（考试默写用）</summary><div class="body">Expertise <b>shifts rather than disappears</b> — toward interpreting the score, knowing when to trust it, handling borderline cases. <b>De-skilling risk</b>; parallel design preserves expertise.</div></details>
+    <details class="en-tpl med"><summary>英文模板（考试默写用）</summary><div class="body">Expertise <b>shifts</b> — toward interpreting flags, handling ambiguous/rare cases, integrating clinical context. <b>De-skilling risk is especially serious in medicine</b>; reading independently before seeing the AI preserves clinical skill.</div></details>
   </div>
 
   <!-- Q7 -->
-  <div class="card q" data-audio="08_q7">
+  <div class="card q">
     <div class="qhead"><span class="num">第 7 题</span><span class="mk">9%</span><span class="tag">伦理问题 + 对策</span><button class="say">🔊 读这段</button></div>
     <div class="qq">题目：描述伦理问题并提出可落地的对策。</div>
-    <div class="qa"><span class="alabel">范例答案（中文）</span>伦理问题三个：① <b>偏见与歧视</b>——模型在历史数据上训练，而这些数据本就较少批准较穷或少数族裔的人，于是学到并放大，形成<b>自我强化的反馈循环</b>；② <b>透明度/黑箱</b>——被拒者不知原因、无法申诉；③ <b>隐私</b>——用了敏感个人数据。<br><br>可落地对策：① 定期做跨群体<b>偏见审计</b>，监控并排除受保护属性；② 要求<b>可解释的理由</b>并设<b>申诉渠道</b>；③ 数据最小化、合规存储。</div>
-    <details class="en-tpl"><summary>英文作答模板（考试默写用）</summary><div class="body"><b>Concerns:</b> (1) <b>Bias</b> — trains on historical data that under-approved poorer/minority applicants, learning and amplifying it (a self-reinforcing loop). (2) <b>Transparency/black box</b> — rejected applicants aren't told why and can't appeal. (3) <b>Privacy</b>.<br><br><b>Fixes:</b> (1) regular <b>bias audits</b>, monitor/exclude protected attributes; (2) require <b>explainable reasons</b> + an <b>appeal channel</b>; (3) data minimisation and compliant storage.</div></details>
+    <div class="qa bank" data-audio="08_q7"><span class="alabel">范例答案（中文）</span>问题：① <b>偏见</b>（历史数据少批穷人/少数族裔→学并放大，恶性循环）；② <b>黑箱</b>（被拒不知原因、无法申诉）；③ <b>隐私</b>。对策：① 跨群体<b>偏见审计</b>+排除受保护属性；② <b>可解释理由 + 申诉渠道</b>；③ 数据最小化、合规存储。</div>
+    <div class="qa med" data-audio="08_q7_med"><span class="alabel">范例答案（中文 · 医院）</span>问题：① <b>误诊代价不对称</b>——假阴性（漏诊）可能致命，只看整体准确率会漏标，须摆明并治理；② <b>偏见</b>（数据偏某人群→对其他群体不准，医疗不平等）；③ <b>黑箱</b>（为何标记/放过看不到，损害信任与知情同意）；④ <b>隐私</b>（敏感健康数据）。对策：① <b>阈值偏谨慎/多召回</b>+临床签字；② 跨人群<b>偏见审计</b>+多样数据；③ 可解释、医生能追问；④ 严格健康数据保护与知情同意。</div>
+    <details class="en-tpl bank"><summary>英文模板（考试默写用）</summary><div class="body">(1) Bias (self-reinforcing loop) → audits; (2) black box → explainability + appeal; (3) privacy → minimisation.</div></details>
+    <details class="en-tpl med"><summary>英文模板（考试默写用）</summary><div class="body">(1) <b>Asymmetric error cost</b> — false negatives can be fatal → tune threshold toward recall with clinical sign-off; (2) bias → audits + diverse data; (3) black box → explainable flags; (4) privacy → strict protection &amp; consent.</div></details>
   </div>
 
   <!-- Q8 -->
-  <div class="card q" data-audio="09_q8">
+  <div class="card q">
     <div class="qhead"><span class="num">第 8 题</span><span class="mk">12% (9+3)</span><span class="tag">实施流程</span><button class="say">🔊 读这段</button></div>
     <div class="qq">题目：设计逐步实施流程（怎么一步步建到 to-be）。</div>
-    <div class="qa"><span class="alabel">范例答案（中文）</span>六个阶段：① <b>数据基础</b>——收集、清洗、标注历史数据，确保质量与合规；② <b>开发并训练</b>这套决策支持型 AI；③ <b>试点</b>——让 AI 在小范围平行运行、<b>不影响真实决定</b>，把 AI 和人对比；④ <b>评估</b>——准确率、偏见、员工反馈，达标才继续；⑤ <b>上线</b>——嵌入审批流程（这就是 to-be）；⑥ <b>监控与迭代</b>——跟踪表现和偏见、结果回流、培训员工。<br><br>深入讲一步（+3%，试点）：用<b>影子模式</b>让错误不造成真实代价，上线前先约定好成功标准。</div>
-    <details class="en-tpl"><summary>英文作答模板（考试默写用）</summary><div class="body">① <b>Data foundation</b> — collect, clean, label data. ② <b>Develop &amp; train</b>. ③ <b>Pilot</b> — run AI <b>in parallel</b> on a small scale <b>without affecting real decisions</b>, comparing AI vs human. ④ <b>Evaluate</b> — accuracy, bias, staff feedback; proceed only if thresholds met. ⑤ <b>Deploy</b> — embed into the workflow (= the "to-be"). ⑥ <b>Monitor &amp; iterate</b>. <b>Deep-dive (+3%, Pilot):</b> shadow-mode so errors carry no real cost; success criteria agreed before go-live.</div></details>
+    <div class="qa bank" data-audio="09_q8"><span class="alabel">范例答案（中文）</span>六阶段：① <b>数据基础</b>（收集/清洗/标注）→ ② <b>开发训练</b> → ③ <b>试点</b>（小范围影子运行、不影响真实决定）→ ④ <b>评估</b>（准确率/偏见/反馈）→ ⑤ <b>上线</b>（嵌入审批=to-be）→ ⑥ <b>监控迭代</b>。深讲「试点」：影子模式让错误无代价，先定成功标准。</div>
+    <div class="qa med" data-audio="09_q8_med"><span class="alabel">范例答案（中文 · 医院）</span>六阶段：① <b>数据基础</b>（收集/清洗/标注确诊影像、确保多样性与合规）→ ② <b>开发训练</b> → ③ <b>临床验证 + 试点</b>（平行运行、不影响真实诊断，并取得<b>监管审批</b>）→ ④ <b>评估</b>（敏感度/特异度，尤其<b>假阴性率</b>、偏见、医生信任）→ ⑤ <b>上线</b>（嵌入读片=to-be）→ ⑥ <b>监控迭代</b>。深讲「验证」：独立有代表性数据集、<b>优先降假阴性</b>。</div>
+    <details class="en-tpl bank"><summary>英文模板（考试默写用）</summary><div class="body">① Data foundation → ② develop/train → ③ pilot (shadow, no real effect) → ④ evaluate → ⑤ deploy (= to-be) → ⑥ monitor. Deep-dive Pilot: shadow-mode, success criteria pre-agreed.</div></details>
+    <details class="en-tpl med"><summary>英文模板（考试默写用）</summary><div class="body">① Data foundation → ② develop/train → ③ <b>clinical validation + pilot</b> (parallel, regulatory approval) → ④ evaluate (sensitivity/specificity, false-negative rate) → ⑤ deploy → ⑥ monitor. Deep-dive Validation: minimise false negatives first.</div></details>
   </div>
 
   <!-- Q9 -->
-  <div class="card q" data-audio="10_q9">
+  <div class="card q">
     <div class="qhead"><span class="num">第 9 题</span><span class="mk">9%</span><span class="tag">治理机制</span><button class="say">🔊 读这段</button></div>
     <div class="qq">题目：提出具体的治理机制。</div>
-    <div class="qa"><span class="alabel">范例答案（中文）</span>① <b>AI 监督委员会</b>——跨部门（信息官 + 法务/合规 + 风控 + 业务）；② 把定期<b>偏见审计</b>和性能监控<b>制度化</b>；③ <b>override 留痕</b>——员工推翻 AI 时必须记录理由；④ 对受影响申请人提供<b>可解释性与申诉</b>；⑤ 清晰的<b>问责链</b>——每个决定都有一个明确负责的人；⑥ 数据与模型版本的<b>文档与审计记录</b>。每条都对应第 7 题的一个问题：委员会/审计↔偏见，可解释/申诉↔黑箱，问责链↔必须有人负责。</div>
-    <details class="en-tpl"><summary>英文作答模板（考试默写用）</summary><div class="body">(1) <b>AI oversight committee</b> (CIO + legal/compliance + risk + business). (2) <b>Regular bias audits</b> + performance monitoring. (3) <b>Override logging</b> — staff record a reason when overriding the AI. (4) <b>Explainability + appeal</b>. (5) <b>Clear accountability chain</b> — a defined human responsible for every decision. (6) <b>Documentation &amp; audit trails</b>. Each maps to a Q7 concern.</div></details>
+    <div class="qa bank" data-audio="10_q9"><span class="alabel">范例答案（中文）</span>① <b>AI 监督委员会</b>（信息官+法务/合规+风控+业务）；② <b>偏见审计</b>+监控制度化；③ <b>override 留痕</b>；④ 对客户<b>可解释+申诉</b>；⑤ 清晰<b>问责链</b>；⑥ 数据/模型版本<b>文档审计</b>。逐一对应第 7 题。</div>
+    <div class="qa med" data-audio="10_q9_med"><span class="alabel">范例答案（中文 · 医院）</span>① <b>临床 AI 监督委员会</b>（临床医生+信息官+法务/合规+伦理）；② 审计准确率与偏见、<b>特别跟踪假阴性（漏诊）</b>；③ <b>override 留痕</b>；④ 可解释 + 医生<b>永远有推翻权</b>；⑤ <b>问责</b>=负责的医生而非算法（注意义务）；⑥ 文档审计 + 监管合规。逐一对应第 7 题。</div>
+    <details class="en-tpl bank"><summary>英文模板（考试默写用）</summary><div class="body">(1) oversight committee; (2) bias audits; (3) override logging; (4) explainability + appeal; (5) accountability chain; (6) documentation.</div></details>
+    <details class="en-tpl med"><summary>英文模板（考试默写用）</summary><div class="body">(1) clinical AI oversight board; (2) audits tracking <b>false negatives</b>; (3) override logging; (4) explainability + clinician's right to override; (5) accountability = the clinician (duty of care); (6) documentation + regulatory compliance.</div></details>
   </div>
 
   <!-- 事件 -->
-  <div class="card q" data-audio="11_incident">
+  <div class="card q">
     <div class="qhead"><span class="num">事件分析</span><span class="mk">12%</span><span class="tag">压轴 · 案例焦点</span><button class="say">🔊 读这段</button></div>
     <div class="qq">题目：分析具体事件——相关决策、伦理问题、问责。</div>
-    <div class="qa"><span class="alabel">范例答案（中文）</span><b>① 决策</b>：到底决定了什么、AI 起了什么作用（如申请人主要因 AI 的风险分而被拒）。<br><b>② 伦理问题</b>：是否对某个群体有偏见？是否可解释？能否申诉？（呼应第 7 题）<br><b>③ 问责</b>：顺着追责链找到责任人——最终定案的员工、以及部署系统的银行；<b>必须是人、不是算法</b>负责；若当初跳过复审/监督环节，责任就在那里。<br><b>收尾</b>：建议用治理机制（审计、override 留痕、申诉）防止再发生。</div>
-    <details class="en-tpl"><summary>英文作答模板（考试默写用）</summary><div class="body"><b>The decision:</b> what was decided and AI's role (e.g. the applicant was rejected largely on the AI's risk score).<br><b>Ethical concerns:</b> biased against a group? Explainable? Could they appeal?<br><b>Accountability:</b> a human, not the algorithm, must be accountable — the employee who finalised, the bank that deployed it; if the override/oversight step was skipped, responsibility lies there.<br><b>Close:</b> recommend governance (audit, override logging, appeal) to prevent recurrence.</div></details>
+    <div class="qa bank" data-audio="11_incident"><span class="alabel">范例答案（中文）</span><b>① 决策</b>：决定了什么、AI 起什么作用（如申请人主要因 AI 风险分被拒）。<b>② 伦理</b>：是否偏见？可解释？可申诉？<b>③ 问责</b>：顺追责链找到定案员工与部署银行，<b>必须人而非算法</b>负责；若跳过复审/监督，责任在那里。<b>收尾</b>：治理机制（审计、override 留痕、申诉）防再发。</div>
+    <div class="qa med" data-audio="11_incident_med"><span class="alabel">范例答案（中文 · 医院）</span><b>① 决策</b>：发生了什么、AI 起什么作用（如 AI 判片子正常、<b>漏掉恶性病变</b>、病人受害）。<b>② 伦理</b>：这正是<b>不对称代价</b>的失败——假阴性造成真实伤害；医生是否过度依赖（自动化偏见）？「正常」可解释吗？某人群更易受害吗？<b>③ 问责</b>：负注意义务的是人非算法——读片医生负责、医院为部署与监督设计负责；若跳过独立判读/二次复核，责任在那里。<b>收尾</b>：阈值偏多召回、假阴性审计、强制独立判读、override 留痕，防再发。</div>
+    <details class="en-tpl bank"><summary>英文模板（考试默写用）</summary><div class="body">Decision (rejected on AI score) → ethical concerns (bias/explainability/appeal) → accountability (a human, not the algorithm) → close with governance.</div></details>
+    <details class="en-tpl med"><summary>英文模板（考试默写用）</summary><div class="body">Decision (AI cleared a scan, malignancy missed, patient harmed) → <b>asymmetric-cost</b> failure / automation bias → accountability: the clinician (duty of care) &amp; the hospital → close with recall-biased governance + false-negative audits.</div></details>
   </div>
 
   <div class="foot">
-    妈妈版 · 中文语音已全部缓存 · 点「▶ 一键朗读」连续播放（题目 + 中文范例答案）<br>
-    「显示英文模板」是给考生默写用的——进考场写骨架、把案例细节填进去，光抄模板会判 too generic。
+    妈妈版 · 中文语音已全部缓存 · 上方可切「🏦 银行 / 🏥 医院」两案例 · 点「▶ 一键朗读」连续播放（题目 + 中文范例答案）<br>
+    「英文模板」给考生默写用——进考场写骨架、把案例细节填进去，光抄模板会判 too generic。
   </div>
 
   <audio id="player" preload="auto"></audio>
@@ -200,6 +239,7 @@
   var playAll=document.getElementById('playAll');
   var stopBtn=document.getElementById('stopAll');
   var enToggle=document.getElementById('enToggle');
+  var caseBtn=document.getElementById('caseBtn');
   var statusEl=document.getElementById('status');
   var fsUp=document.getElementById('fsUp'), fsDown=document.getElementById('fsDown');
 
@@ -211,21 +251,24 @@
 
   enToggle.addEventListener('click',function(){
     document.body.classList.toggle('show-en');
-    enToggle.textContent=document.body.classList.contains('show-en')?'隐藏英文模板':'显示英文模板';
+    enToggle.textContent=document.body.classList.contains('show-en')?'隐藏英文':'英文模板';
   });
 
-  var order=[].map.call(document.querySelectorAll('[data-audio]'),function(el){
-    return {el:el,id:el.getAttribute('data-audio')};
-  });
-  var idx=0, playing=false, single=false, preEl=null;
+  function visibleAudio(scope){
+    return [].filter.call((scope||document).querySelectorAll('[data-audio]'),function(el){ return el.offsetParent!==null; });
+  }
+  function buildOrder(){
+    return visibleAudio(document).map(function(el){ return {el:el,id:el.getAttribute('data-audio'),card:el.closest('.card')||el}; });
+  }
 
+  var order=[], idx=0, playing=false, single=false, preEl=null;
   function src(id){ return 'audio/'+id+'.mp3'; }
   function setStatus(t){ statusEl.textContent=t||''; }
   function setPlayingUI(on){ playing=on; playAll.classList.toggle('playing',on);
     playAll.textContent=on?'⏸ 正在朗读…':'▶ 一键朗读（中文）'; }
-  function highlight(el){
+  function highlight(card){
     [].forEach.call(document.querySelectorAll('.reading'),function(c){c.classList.remove('reading');});
-    if(el){ el.classList.add('reading'); try{el.scrollIntoView({behavior:'smooth',block:'center'});}catch(e){} }
+    if(card){ card.classList.add('reading'); try{card.scrollIntoView({behavior:'smooth',block:'center'});}catch(e){} }
   }
   function preload(id){ try{ preEl=new Audio(); preEl.preload='auto'; preEl.src=src(id); }catch(e){} }
 
@@ -237,7 +280,7 @@
   }
   function playCur(){
     if(!playing||idx>=order.length){ stop(); return; }
-    var it=order[idx]; highlight(it.el);
+    var it=order[idx]; highlight(it.card);
     setStatus('第 '+(idx+1)+' / '+order.length+' 段');
     player.src=src(it.id);
     if(!single && idx+1<order.length) preload(order[idx+1].id);
@@ -246,24 +289,37 @@
     var p=player.play();
     if(p&&p.catch) p.catch(function(){ setStatus('被浏览器拦截了——再点一次「▶ 一键朗读」即可'); });
   }
-  function startFrom(i,one){ stop(); idx=i; single=!!one; playing=true; setPlayingUI(true); playCur(); }
+  function startFrom(ord,i,one){ stop(); order=ord; idx=i; single=!!one; playing=true; setPlayingUI(true); playCur(); }
 
   playAll.addEventListener('click',function(){
     if(playing){
       if(player.paused){ player.play(); setPlayingUI(true); } else { player.pause(); setPlayingUI(false); }
       playing=true; return;
     }
-    startFrom(0,false);
+    startFrom(buildOrder(),0,false);
   });
   stopBtn.addEventListener('click',stop);
 
   [].forEach.call(document.querySelectorAll('.say'),function(b){
     b.addEventListener('click',function(e){
       e.stopPropagation();
-      var card=b.closest('[data-audio]');
-      var i=order.findIndex(function(o){return o.el===card;});
-      if(i>=0) startFrom(i,true);
+      var card=b.closest('.card');
+      var el=visibleAudio(card)[0]; if(!el) return;
+      var ord=buildOrder(); var i=-1;
+      for(var k=0;k<ord.length;k++){ if(ord[k].el===el){ i=k; break; } }
+      if(i>=0) startFrom(ord,i,true);
     });
+  });
+
+  caseBtn.addEventListener('click',function(){
+    stop();
+    if(document.body.classList.contains('case-bank')){
+      document.body.classList.remove('case-bank'); document.body.classList.add('case-med');
+      caseBtn.textContent='🏥 医院版　点这切🏦银行';
+    }else{
+      document.body.classList.remove('case-med'); document.body.classList.add('case-bank');
+      caseBtn.textContent='🏦 银行版　点这切🏥医院';
+    }
   });
 
   window.addEventListener('beforeunload',stop);
